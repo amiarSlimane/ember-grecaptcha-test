@@ -1,0 +1,32 @@
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+        <h3>Registration</h3>
+        <form class="m-t" role="form" {{on "submit" this.register}}>
+            {{#each @errors as |error|}}
+                <div class="error-alert">{{error.detail}}</div>
+            {{/each}}
+            <div class="form-group">
+               <Input @type="email" class="form-control" placeholder="Username" @value={{this.username}} required="true" />
+            </div>
+            <div class="form-group">
+                <Input @type="password" class="form-control" placeholder="Password" @value={{this.password}} required="true" />
+            </div>
+            <div class="form-group">
+                <Input @type="password" class="form-control" placeholder="Confirm Password" @value={{this.confirmPassword}} required="true" />
+            </div>
+            <div>
+                <!--
+                <GRecaptcha @size="normal" @sitekey={{this.siteKey}} @onSuccess={{action "onCaptchaResolved"}} @onExpired={{action "onCaptchaExpired"}} @ref={{mut this.googleRecaptcha}} />
+                -->
+                <GRecaptcha 
+                    @size="normal" 
+                     
+                    @onSuccess={{action "onCaptchaResolved"}} 
+                    @onExpired={{action "onCaptchaExpired"}} 
+                    @ref={{mut this.googleRecaptcha}} 
+                />
+                <button type="submit" class="btn btn-primary block full-width m-b">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
